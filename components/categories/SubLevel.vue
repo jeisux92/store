@@ -5,7 +5,8 @@
       :key="sublevel.id"
       @mouseenter="selectSubCategory(sublevel.id)"
     >
-      <v-btn color v-text="sublevel.name"></v-btn>
+      <span v-text="sublevel.name"></span>
+      <v-icon small v-if="sublevel.sublevels">keyboard_arrow_right</v-icon>
       <div class="sub-level">
         <Sub-Level
           v-if="sublevel.sublevels && sublevel.id==selected"
@@ -31,25 +32,27 @@ export default {
   },
   methods: {
     selectSubCategory(subCategoryId) {
-      console.log(subCategoryId)
       this.selected = subCategoryId
     }
   }
 }
 </script>
-<style scoped>
+<style  scoped>
 ul.sub-level-container {
-  position: relative;
   padding: 0;
 }
 
 .sub-level-container li {
   list-style: none;
+  display: block;
+  white-space: nowrap;
+  position: relative;
 }
 .sub-level-container .sub-level {
   position: absolute;
   top: 0;
   right: 0;
   transform: translateX(100%);
+  padding-left: 15px;
 }
 </style>

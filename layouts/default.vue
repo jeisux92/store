@@ -1,23 +1,48 @@
 <template>
-  <v-app dark>
-    <Categories :categories="categories"/>
-    <nuxt/>
+  <v-app light>
+    <div class="header">
+      <Header></Header>
+    </div>
+    <v-container fluid>
+      <v-layout fill-height>
+        <v-flex xs2>
+          <v-layout justify-center column fill-height>
+            <v-flex xs12>
+              <div class="aside">
+                <Aside></Aside>
+              </div>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+        <v-flex xs8>
+          <section>
+            <nuxt/>
+          </section>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </v-app>
 </template>
 
 <script>
-import Categories from '@/components/layout/Categories/Categories'
-import categories from '@/static/categories.json'
+import Header from '@/components/layout/Header'
+import Aside from '@/components/layout/Aside'
 export default {
   components: {
-    Categories
-  },
-  data() {
-    return {
-      categories: categories.categories
-    }
+    Aside,
+    Header
   }
 }
 </script>
 <style scoped>
+.aside {
+  padding-top: 10px;
+  height: 90%;
+}
+section {
+  width: 80%;
+  padding-top: 10px;
+  width: 95%;
+  margin: 0 auto;
+}
 </style>

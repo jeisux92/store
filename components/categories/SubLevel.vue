@@ -3,7 +3,8 @@
     <li
       v-for="(sublevel) in sublevels"
       :key="sublevel.id"
-      @mouseenter="selectSubCategory(sublevel.id)"
+      @click.stop="setSubLevel(sublevel.id)"
+      @mouseenter="selectSubLevel(sublevel.id)"
     >
       <span v-text="sublevel.name"></span>
       <v-icon small v-if="sublevel.sublevels">keyboard_arrow_right</v-icon>
@@ -31,28 +32,45 @@ export default {
     }
   },
   methods: {
-    selectSubCategory(subCategoryId) {
-      this.selected = subCategoryId
+    selectSubLevel(subLevelId) {
+      this.selected = subLevelId
+    },
+    setSubLevel(subLevelId) {
+      this.$store.commit('products/setSubLevel', subLevelId)
     }
   }
 }
 </script>
-<style  scoped>
+<style lang="scss"  scoped>
 ul.sub-level-container {
   padding: 0;
-}
+  li {
+    list-style: none;
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    color: #424242;
+    padding: 9px;
 
-.sub-level-container li {
-  list-style: none;
-  display: block;
-  white-space: nowrap;
-  position: relative;
-}
-.sub-level-container .sub-level {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateX(100%);
-  padding-left: 15px;
+    > i {
+      color: #424242;
+    }
+  }
+  > li:hover {
+    color: orange;
+    > i {
+      color: orange;
+    }
+  }
+  .sub-level {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    padding-left: 15px;
+    background-color: #fafafa;
+    z-index: 1000;
+    overflow: visible;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="categories">
+  <v-container fluid class="categories">
     <h3>Categories</h3>
     <ul>
       <li
@@ -11,14 +11,11 @@
         <span>{{categorie.name}}</span>
         <v-icon small v-if="categorie.sublevels">keyboard_arrow_right</v-icon>
         <div class="sub-level">
-          <Sub-Level
-            v-if="categorie.sublevels && categorie.id ==selected"
-            :sublevels="categorie.sublevels"
-          />
+          <Sub-Level v-if="categorie.sublevels && categorie.id ==selected" :sublevels="categorie.sublevels"/>
         </div>
       </li>
     </ul>
-  </div>
+  </v-container>
 </template>
 <script>
 //
@@ -48,31 +45,37 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 h3 {
   padding: 0 15px 5px 15px;
 }
 .categories {
-  display: inline-block;
-}
-ul {
-  list-style: none;
-  overflow: visible;
-  padding: 0;
-  display: inline-block;
-  padding-left: 15px;
-}
-ul li {
-  cursor: pointer;
-  display: block;
-  position: relative;
-}
-ul li .sub-level {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateX(100%);
-
-  padding-left: 15px;
+  ul {
+    list-style: none;
+    overflow: visible;
+    padding: 0;
+    display: inline-block;
+    li {
+      cursor: pointer;
+      display: block;
+      padding: 9px;
+      position: relative;
+      color: #424242;
+      .sub-level {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        background-color: #fafafa;
+        z-index: 100;
+      }
+    }
+    > li:hover {
+      color: orange;
+      i {
+        color: orange;
+      }
+    }
+  }
 }
 </style>

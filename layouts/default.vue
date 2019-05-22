@@ -14,7 +14,7 @@
             </v-flex>
           </v-layout>
         </v-flex>
-        <v-flex xs8>
+        <v-flex xs10>
           <section>
             <nuxt/>
           </section>
@@ -36,13 +36,7 @@ export default {
 </script>
 <style scoped>
 .aside {
-  padding-top: 10px;
   height: 90%;
 }
-section {
-  width: 80%;
-  padding-top: 10px;
-  width: 95%;
-  margin: 0 auto;
-}
+
 </style>

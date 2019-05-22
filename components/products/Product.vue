@@ -1,0 +1,40 @@
+<template>
+  <v-card tile flat>
+    <v-card-title primary-title column>
+      <h3 class="headline mb-0" v-text="product.name"></h3>
+    </v-card-title>
+    <v-card-text>
+      <v-layout column align-center>
+        <span>
+          <strong>Precio</strong>
+          {{product.price}}
+        </span>
+        <span>{{product.available?"Disponible":"No disponible"}}</span>
+        <span>
+          <strong>Cantidad</strong>
+          {{product.quantity}}
+        </span>
+      </v-layout>
+    </v-card-text>
+
+    <v-card-actions>
+      <v-layout row justify-center>
+        <v-btn flat color="green">Comprar</v-btn>
+      </v-layout>
+    </v-card-actions>
+  </v-card>
+</template>
+<script>
+export default {
+  props: {
+    product: {
+      required: true
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+h3 {
+  margin: 0 auto;
+}
+</style>

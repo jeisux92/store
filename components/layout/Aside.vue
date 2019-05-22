@@ -4,7 +4,7 @@
   </aside>
 </template>
 <script>
-import Categories from '../categories/Categories'
+import Categories from '@/components/categories/Categories'
 import categories from '@/static/categories.json'
 export default {
   components: {

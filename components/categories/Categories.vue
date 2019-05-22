@@ -1,21 +1,28 @@
 <template>
-  <v-container fluid class="categories">
-    <h3>Categories</h3>
-    <ul>
-      <li
-        v-for="(categorie) in categories"
-        :key="categorie.id"
-        @mouseleave.stop="selectCategorie(null)"
-        @mouseenter.stop="selectCategorie(categorie.id)"
-      >
-        <span>{{categorie.name}}</span>
-        <v-icon small v-if="categorie.sublevels">keyboard_arrow_right</v-icon>
-        <div class="sub-level">
-          <Sub-Level v-if="categorie.sublevels && categorie.id ==selected" :sublevels="categorie.sublevels"/>
-        </div>
-      </li>
-    </ul>
-  </v-container>
+  <v-layout column class="categories">
+    <v-flex>
+      <h3>Categories</h3>
+    </v-flex>
+    <v-flex>
+      <ul>
+        <li
+          v-for="(categorie) in categories"
+          :key="categorie.id"
+          @mouseleave.stop="selectCategorie(null)"
+          @mouseenter.stop="selectCategorie(categorie.id)"
+        >
+          <span>{{categorie.name}}</span>
+          <v-icon small v-if="categorie.sublevels">keyboard_arrow_right</v-icon>
+          <div class="sub-level">
+            <Sub-Level
+              v-if="categorie.sublevels && categorie.id ==selected"
+              :sublevels="categorie.sublevels"
+            />
+          </div>
+        </li>
+      </ul>
+    </v-flex>
+  </v-layout>
 </template>
 <script>
 //
@@ -46,19 +53,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-h3 {
-  padding: 0 15px 5px 15px;
-}
 .categories {
   ul {
     list-style: none;
     overflow: visible;
     padding: 0;
     display: inline-block;
-    li {
-      cursor: pointer;
+    > li {
+      cursor: default;
       display: block;
-      padding: 9px;
+      padding: 9px 0;
       position: relative;
       color: #424242;
       .sub-level {

@@ -51,7 +51,7 @@ ul.sub-level-container {
     position: relative;
     color: #424242;
     padding: 9px;
-
+    cursor: pointer;
     > i {
       color: #424242;
     }

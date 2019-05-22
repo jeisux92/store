@@ -9,7 +9,7 @@
         <v-flex>
           <v-layout>
             <v-flex>
-              <v-range-slider color=orange v-model="price" max="10000" min="1000" step="1000"></v-range-slider>
+              <v-range-slider color=orange v-model="price" :max="6000" :min="0" :step="100"></v-range-slider>
             </v-flex>
           </v-layout>
           <v-layout justify-space-between row>

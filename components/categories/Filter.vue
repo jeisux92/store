@@ -7,7 +7,19 @@
           <v-text-field label="Cantidad en stock" required min="0" type="number" color="orange"></v-text-field>
         </v-flex>
         <v-flex>
-          <v-slider label="Max characters" color="orange"></v-slider>
+          <v-layout>
+            <v-flex>
+              <v-range-slider color=orange v-model="price" max="10000" min="1000" step="1000"></v-range-slider>
+            </v-flex>
+          </v-layout>
+          <v-layout justify-space-between row>
+            <v-flex sm4>
+              <v-text-field color=orange v-model="price[0]" class="mt-0" hide-details single-line type="number"></v-text-field>
+            </v-flex>
+            <v-flex sm4>
+              <v-text-field color=orange v-model="price[1]" class="mt-0" hide-details single-line type="number"></v-text-field>
+            </v-flex>
+          </v-layout>
         </v-flex>
         <v-flex>
           <v-checkbox label="Disponible" color="orange" row></v-checkbox>
@@ -16,3 +28,12 @@
     </v-flex>
   </v-layout>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      price: [1000, 6000]
+    }
+  }
+}
+</script>

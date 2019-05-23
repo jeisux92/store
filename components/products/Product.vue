@@ -19,7 +19,7 @@
 
     <v-card-actions>
       <v-layout row justify-center>
-        <v-btn flat color="green">Comprar</v-btn>
+        <v-btn color="success">Comprar</v-btn>
       </v-layout>
     </v-card-actions>
   </v-card>

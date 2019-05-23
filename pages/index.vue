@@ -7,6 +7,7 @@
         <Product :product="product"/>
       </v-flex>
     </v-layout>
+      <pre>{{productsFilter}}</pre>
   </v-container>
 </template>
 
@@ -28,6 +29,9 @@ export default {
       return this.products.filter(
         product => product.sublevel_id == this.$store.state.products.subLevel
       )
+    },
+    productsFilter() {
+      return this.$store.state.products.filter
     }
   }
 }

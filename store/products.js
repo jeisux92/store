@@ -1,7 +1,12 @@
 export const state = () => ({
   counter: 0,
   subLevel: 0,
-  car: []
+  car: [],
+  filter: {
+    price: [0, 0],
+    quantity: 1,
+    availible: true
+  }
 })
 
 export const mutations = {
@@ -10,12 +15,8 @@ export const mutations = {
   },
   setSubLevel(state, id) {
     state.subLevel = id;
-  }
-}
-export const actions = {
-  nuxtServerInit({ commit }, { req }) {
-    if (req.session.user) {
-      commit('user', req.session.user)
-    }
+  },
+  setFilter(state, filter) {
+    state.filter = { ...state.filter, ...filter };
   }
 }

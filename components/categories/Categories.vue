@@ -42,9 +42,6 @@ export default {
       selected: null
     }
   },
-  mounted() {
-    console.log(this.categories)
-  },
   methods: {
     selectCategorie(categorieId) {
       this.selected = categorieId

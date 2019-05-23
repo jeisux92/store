@@ -17,7 +17,7 @@
           <v-flex>
             <v-layout>
               <v-flex>
-                <v-range-slider color="primary" v-model="price" :max="6000" :min="0" :step="100"></v-range-slider>
+                <v-range-slider color="primary" v-model="price" :max="20000" :min="0" :step="100"></v-range-slider>
               </v-flex>
             </v-layout>
             <v-layout justify-space-between row wrap>
@@ -26,17 +26,18 @@
                   color="primary"
                   v-model="price[0]"
                   class="mt-0"
+                  prefix="$"
                   hide-details
                   single-line
                   type="number"
                 ></v-text-field>
               </v-flex>
               <v-flex md5 xs12>
-                <span>{{price[1]}}</span>
                 <v-text-field
                   color="primary"
                   v-model="price[1]"
                   class="mt-0"
+                  prefix="$"
                   hide-details
                   single-line
                   type="number"
@@ -45,7 +46,7 @@
             </v-layout>
           </v-flex>
           <v-flex>
-            <v-checkbox label="Disponible" color="primary" row v-model="availible"></v-checkbox>
+            <v-checkbox label="Disponible" color="primary" row v-model="available"></v-checkbox>
           </v-flex>
         </v-layout>
       </v-flex>
@@ -54,16 +55,15 @@
       <v-flex sm12 md12 lg8 d-flex>
         <v-btn dark>Eliminar Filtro</v-btn>
       </v-flex>
-      <v-flex sm12 md8 d-flex>
+      <!-- <v-flex sm12 md8 d-flex>
         <v-btn color="primary">Filtrar</v-btn>
-      </v-flex>
+      </v-flex> -->
     </v-layout>
   </div>
 </template>
 <script>
 export default {
-  data: () => ({
-  }),
+  data: () => ({}),
   computed: {
     price: {
       get() {
@@ -81,12 +81,12 @@ export default {
         this.$store.commit('products/setFilter', { quantity: +value })
       }
     },
-    availible: {
+    available: {
       get() {
-        return this.$store.state.products.filter.availible
+        return this.$store.state.products.filter.available
       },
       set(value) {
-        this.$store.commit('products/setFilter', { availible: value })
+        this.$store.commit('products/setFilter', { available: value })
       }
     }
   }

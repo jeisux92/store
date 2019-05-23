@@ -2,12 +2,11 @@
   <v-container fluid grid-list-sm>
     <h3>Productos</h3>
     <!-- <nuxt-link to="/user">User</nuxt-link> -->
-    <v-layout v-if="productsSelected.length>0" wrap row>
-      <v-flex md3 sm5 v-for="product in productsSelected" :key="product.id">
+    <v-layout v-if="productsChoosed.length>0" wrap row>
+      <v-flex md3 sm5 v-for="product in productsChoosed" :key="product.id">
         <Product :product="product"/>
       </v-flex>
     </v-layout>
-      <pre>{{productsFilter}}</pre>
   </v-container>
 </template>
 
@@ -21,17 +20,43 @@ export default {
   },
   data() {
     return {
-      products: products.products
+      products: products.products,
+      filter: {}
+    }
+  },
+  methods: {
+    applyFilter: function(products, filter) {
+      return products
+        .filter(product => product.available === filter.available)
+        .filter(product =>
+          filter.quantity ? product.quantity === filter.quantity : true
+        )
+        .filter(
+          product =>
+            this.parsePrice(product.price) >= filter.price[0] &&
+            this.parsePrice(product.price) <= filter.price[1]
+        )
+    },
+    parsePrice(price) {
+      return +price.replace('$', '').replace(',', '')
     }
   },
   computed: {
-    productsSelected() {
-      return this.products.filter(
-        product => product.sublevel_id == this.$store.state.products.subLevel
-      )
+    productsSelected: {
+      get: function() {
+        return this.$store.state.products.subLevel
+      }
     },
-    productsFilter() {
-      return this.$store.state.products.filter
+    productsFilter: {
+      get: function() {
+        return this.$store.state.products.filter
+      }
+    },
+    productsChoosed: function() {
+      let productsBySubLevel = this.products.filter(
+        product => product.sublevel_id == this.productsSelected
+      )
+      return this.applyFilter(productsBySubLevel, this.productsFilter)
     }
   }
 }

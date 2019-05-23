@@ -3,9 +3,9 @@ export const state = () => ({
   subLevel: 0,
   car: [],
   filter: {
-    price: [0, 0],
-    quantity: 1,
-    availible: true
+    price: [0, 100000],
+    quantity: 0,
+    available: true
   }
 })
 

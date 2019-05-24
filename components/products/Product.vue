@@ -1,5 +1,5 @@
 <template>
-  <v-card tile flat>
+  <v-card tile elevation=3>
     <v-card-title primary-title column>
       <h3 class="headline mb-0" v-text="product.name"></h3>
     </v-card-title>

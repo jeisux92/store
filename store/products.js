@@ -25,8 +25,23 @@ export const mutations = {
       productInCar.count++;
     }
     else {
-      product.count = 0;
+      product.count = 1;
       state.cart.push(product);
+    }
+  },
+  incrementProduct(state, id) {
+    const productInCar = state.cart.find(p => p.id === id);
+    productInCar.count++;
+
+  },
+  decrementProduct(state, id) {
+    const productInCar = state.cart.find(p => p.id === id);
+    if (productInCar.count === 1) {
+      const productIndex = state.cart.indexOf(p => p.id == id);
+      state.cart.splice(productIndex, 1);
+    }
+    else {
+      productInCar.count--;
     }
   }
 }

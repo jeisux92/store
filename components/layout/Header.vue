@@ -5,7 +5,7 @@
       <v-spacer></v-spacer>
       <v-badge left>
         <template v-slot:badge>
-          <span>6</span>
+          <span v-if="quantity.count">!</span>
         </template>
         <v-icon medium @click="activeModal" color="grey lighten-1">shopping_cart</v-icon>
       </v-badge>
@@ -22,11 +22,25 @@ export default {
     Cart
   },
   data: () => ({
-    active: true
+    active: false
   }),
   methods: {
     activeModal() {
       this.active = !this.active
+    }
+  },
+  computed: {
+    quantity() {
+      if (this.$store.state.products.cart.length) {
+        const quantityProducts = this.$store.state.products.cart.reduce(
+          (a, b) => {
+            return { count: a.count + b.count }
+          },
+          { count: 0 }
+        )
+        return quantityProducts
+      }
+      return 0
     }
   }
 }

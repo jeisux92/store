@@ -1,8 +1,13 @@
 <template>
   <aside>
-    <Categories :categories="categories"/>
-    <hr>
-    <FilterCategories/>
+    <v-layout wrap>
+      <v-flex xs6 md12>
+        <Categories :categories="categories"/>
+      </v-flex>
+      <v-flex xs6 md12>
+        <FilterCategories/>
+      </v-flex>
+    </v-layout>
   </aside>
 </template>
 <script>

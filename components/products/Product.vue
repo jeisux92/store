@@ -19,7 +19,7 @@
 
     <v-card-actions>
       <v-layout row justify-center>
-        <v-btn color="success">Comprar</v-btn>
+        <v-btn color="success" @click="buy(product)">Comprar</v-btn>
       </v-layout>
     </v-card-actions>
   </v-card>
@@ -29,6 +29,16 @@ export default {
   props: {
     product: {
       required: true
+    }
+  },
+  methods: {
+    buy: function(product) {
+      const productTransformed = {
+        product: product.price,
+        name: product.name,
+        id: product.id
+      }
+      this.$store.commit('products/addProduct', productTransformed)
     }
   }
 }

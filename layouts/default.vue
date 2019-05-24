@@ -4,20 +4,16 @@
       <Header></Header>
     </div>
     <v-container fluid>
-      <v-layout fill-height>
-        <v-flex xs2>
+      <v-layout wrap>
+        <v-flex md2 sm12>
           <v-layout justify-center column fill-height>
             <v-flex xs12>
-              <div class="aside">
-                <Aside></Aside>
-              </div>
+              <Aside></Aside>
             </v-flex>
           </v-layout>
         </v-flex>
-        <v-flex xs10>
-          <section>
-            <nuxt/>
-          </section>
+        <v-flex xs12 md10 pl-4>
+          <nuxt/>
         </v-flex>
       </v-layout>
     </v-container>
@@ -35,8 +31,4 @@ export default {
 }
 </script>
 <style scoped>
-.aside {
-  height: 90%;
-}
-
 </style>

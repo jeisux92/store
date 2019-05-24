@@ -1,13 +1,12 @@
 <template>
-  <v-container fluid grid-list-sm>
+  <div>
     <h3>Productos</h3>
-    <!-- <nuxt-link to="/user">User</nuxt-link> -->
     <v-layout v-if="productsChoosed.length>0" wrap row>
       <v-flex md3 sm5 v-for="product in productsChoosed" :key="product.id">
         <Product :product="product"/>
       </v-flex>
     </v-layout>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -29,7 +28,7 @@ export default {
       return products
         .filter(product => product.available === filter.available)
         .filter(product =>
-          filter.quantity ? product.quantity === filter.quantity : true
+          filter.quantity ? product.quantity >= filter.quantity : true
         )
         .filter(
           product =>

@@ -20,7 +20,6 @@
         <v-text-field
           label="Buscar"
           v-model="filterText"
-          @keyup="filterByName()"
           @click.stop="stop()"
           class="input-filter"
           v-if="sublevels.every(x=>!x.sublevels)"

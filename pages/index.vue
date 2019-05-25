@@ -66,7 +66,6 @@ export default {
     productsChoosed: function() {
       let productsBySubLevel
       const filterText = this.$store.state.products.criteria
-      debugger;
       if (filterText.text) {
         productsBySubLevel = this.products
           .filter(

@@ -17,7 +17,7 @@
       </v-layout>
     </v-card-text>
 
-    <v-card-actions>
+    <v-card-actions v-if="product.available">
       <v-layout row justify-center>
         <v-btn color="success" @click="buy(product)">Comprar</v-btn>
       </v-layout>

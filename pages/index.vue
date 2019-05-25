@@ -1,7 +1,7 @@
 <template>
   <div justify-space-between wrap>
     <h3>Productos</h3>
-    <v-layout v-if="productsChoosed.length>0" wrap row >
+    <v-layout v-if="productsChoosed.length>0" wrap row>
       <v-flex xs5 md3 lg2 mr-4 mt-4 mb-2 v-for="product in productsChoosed" :key="product.id">
         <Product :product="product"/>
       </v-flex>
@@ -57,6 +57,9 @@ export default {
       )
       return this.applyFilter(productsBySubLevel, this.productsFilter)
     }
+  },
+  beforeDestroy() {
+    console.log('will be destroyed')
   }
 }
 </script>

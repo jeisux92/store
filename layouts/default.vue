@@ -27,6 +27,9 @@ export default {
   components: {
     Aside,
     Header
+  },
+  mounted(){
+    this.$store.commit('products/initialiseStore');
   }
 }
 </script>

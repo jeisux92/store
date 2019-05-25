@@ -10,6 +10,14 @@ export const state = () => ({
 })
 
 export const mutations = {
+  initialiseStore(state) {
+    // Check if the ID exists
+    debugger;
+    if (localStorage.getItem('products')) {
+      state.cart = JSON.parse(localStorage.getItem('products'));
+    }
+  },
+
   increment(state) {
     state.counter++
   },

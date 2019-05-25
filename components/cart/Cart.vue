@@ -30,6 +30,12 @@
 export default {
   computed: {
     productList() {
+      if (process.client) {
+        window.localStorage.setItem(
+          'products',
+          JSON.stringify(this.$store.state.products.cart)
+        )
+      }
       return this.$store.state.products.cart
     }
   },

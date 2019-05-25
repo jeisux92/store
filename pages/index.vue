@@ -55,11 +55,13 @@ export default {
       let productsBySubLevel = this.products.filter(
         product => product.sublevel_id == this.productsSelected
       )
-      return this.applyFilter(productsBySubLevel, this.productsFilter)
+      const filteredValues = this.applyFilter(
+        productsBySubLevel,
+        this.productsFilter
+      )
+
+      return filteredValues
     }
-  },
-  beforeDestroy() {
-    console.log('will be destroyed')
   }
 }
 </script>

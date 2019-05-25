@@ -1,5 +1,5 @@
 <template>
-  <v-card tile elevation=3>
+  <v-card tile elevation="3">
     <v-card-title primary-title column>
       <h3 class="headline mb-0" v-text="product.name"></h3>
     </v-card-title>
@@ -38,7 +38,14 @@ export default {
         name: product.name,
         id: product.id
       }
+
       this.$store.commit('products/addProduct', productTransformed)
+      if (process.client) {
+        window.localStorage.setItem(
+          'products',
+          JSON.stringify(this.$store.state.products.cart)
+        )
+      }
     }
   }
 }

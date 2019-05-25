@@ -62,7 +62,6 @@
 </template>
 <script>
 export default {
-  data: () => ({}),
   methods: {
     deleteFilter() {
       const filter = {
@@ -71,6 +70,7 @@ export default {
         available: true
       }
       this.$store.commit('products/setFilter', filter)
+      this.$store.commit('products/setCriteriaFilter', {})
     }
   },
 

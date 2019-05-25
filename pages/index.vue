@@ -1,7 +1,7 @@
 <template>
   <div justify-space-between wrap>
     <h3>Productos</h3>
-    <v-layout>
+    <v-layout v-if="productsChoosed.length>0">
       <v-flex sm2>
         <v-select :items="items" label="Ordenar por" v-model="order"></v-select>
       </v-flex>
@@ -64,9 +64,23 @@ export default {
       }
     },
     productsChoosed: function() {
-      let productsBySubLevel = this.products.filter(
-        product => product.sublevel_id == this.productsSelected
-      )
+      let productsBySubLevel
+      const filterText = this.$store.state.products.criteria
+      debugger;
+      if (filterText.text) {
+        productsBySubLevel = this.products
+          .filter(
+            p =>
+              filterText.subLevels.findIndex(sl => sl.id === p.sublevel_id) !=
+              -1
+          )
+          .filter(p => p.name.indexOf(filterText.text) != -1)
+      } else {
+        productsBySubLevel = this.products.filter(
+          product => product.sublevel_id == this.productsSelected
+        )
+      }
+
       const filteredValues = this.applyFilter(
         productsBySubLevel,
         this.productsFilter

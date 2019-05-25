@@ -31,15 +31,17 @@ export default {
   computed: {
     productList() {
       if (process.client) {
-        window.localStorage.setItem(
-          'products',
-          JSON.stringify(this.$store.state.products.cart)
-        )
       }
       return this.$store.state.products.cart
     }
   },
   methods: {
+    saveLocalStorage(item) {
+      window.localStorage.setItem(
+        'products',
+        JSON.stringify(this.$store.state.products.cart)
+      )
+    },
     buy() {
       this.$store.commit('products/clearCart')
       this.$emit('carEmpty')
@@ -48,6 +50,7 @@ export default {
       this.$store.commit('products/decrementProduct', id)
       if (this.$store.state.products.cart.length == 0) {
         this.$emit('carEmpty')
+        this.$store.commit('products/clearCart')
       }
     },
     increment(id) {

@@ -6,7 +6,8 @@ export const state = () => ({
     quantity: 0,
     available: true
   },
-  cart: []
+  cart: [],
+  criteria: {}
 })
 
 export const mutations = {
@@ -17,7 +18,8 @@ export const mutations = {
     }
   },
   clearCart(state) {
-    state.cart = [];
+    state.cart = [];    
+    localStorage.removeItem('products')
   },
   increment(state) {
     state.counter++
@@ -37,6 +39,9 @@ export const mutations = {
       product.count = 1;
       state.cart.push(product);
     }
+  },
+  setCriteriaFilter(state, criteria) {
+    state.criteria = criteria;
   },
   incrementProduct(state, id) {
     const productInCar = state.cart.find(p => p.id === id);

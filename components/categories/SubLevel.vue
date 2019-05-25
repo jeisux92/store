@@ -15,6 +15,18 @@
         />
       </div>
     </li>
+    <v-layout>
+      <v-flex sm8>
+        <v-text-field
+          label="Buscar"
+          v-model="filterText"
+          @keyup="filterByName()"
+          @click.stop="stop()"
+          class="input-filter"
+          v-if="sublevels.every(x=>!x.sublevels)"
+        ></v-text-field>
+      </v-flex>
+    </v-layout>
   </ul>
 </template>
 <script>
@@ -32,11 +44,28 @@ export default {
     }
   },
   methods: {
+    stop() {},
+
     selectSubLevel(subLevelId) {
       this.selected = subLevelId
     },
     setSubLevel(subLevelId) {
       this.$store.commit('products/setSubLevel', subLevelId)
+    }
+  },
+  computed: {
+    filterText: {
+      get() {
+        return this.$store.state.products.criteria.text
+      },
+      set(value) {
+        this.$store.commit('products/setCriteriaFilter', {
+          text: value,
+          subLevels: this.sublevels.map(subLevel => ({
+            id: subLevel.id
+          }))
+        })
+      }
     }
   }
 }
@@ -71,6 +100,16 @@ ul.sub-level-container {
     background-color: #fafafa;
     z-index: 1000;
     overflow: visible;
+  }
+
+  .input-filter {
+    padding-top: 0;
+    margin: 0;
+    margin-left: 7px;
+    width: 106px;
+    > div {
+      width: 80%;
+    }
   }
 }
 </style>

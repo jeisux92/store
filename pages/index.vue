@@ -74,10 +74,12 @@ export default {
               -1
           )
           .filter(p => p.name.indexOf(filterText.text) != -1)
-      } else {
+      } else if (this.productsSelected) {
         productsBySubLevel = this.products.filter(
           product => product.sublevel_id == this.productsSelected
         )
+      } else {
+        productsBySubLevel = this.products
       }
 
       const filteredValues = this.applyFilter(

@@ -36,6 +36,9 @@ export default {
   methods: {
     decrement(id) {
       this.$store.commit('products/decrementProduct', id)
+      if (this.$store.state.products.cart.length == 0) {
+        this.$emit('carEmpty')
+      }
     },
     increment(id) {
       this.$store.commit('products/incrementProduct', id)

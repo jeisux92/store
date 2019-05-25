@@ -11,7 +11,7 @@
       </v-badge>
     </v-toolbar>
     <div id="cart" v-if="active">
-      <Cart/>
+      <Cart @carEmpty="activeModal"/>
     </div>
   </header>
 </template>

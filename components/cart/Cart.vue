@@ -22,7 +22,7 @@
         </h4>
         </v-card-text>
        <v-card-actions v-if="productList.length" d-flex>
-          <v-btn small color="primary" block>Comprar</v-btn>          
+          <v-btn small color="primary" block @click="buy">Comprar</v-btn>          
         </v-card-actions>
     </v-card>
 </template>
@@ -40,6 +40,10 @@ export default {
     }
   },
   methods: {
+    buy() {
+      this.$store.commit('products/clearCart')
+      this.$emit('carEmpty')
+    },
     decrement(id) {
       this.$store.commit('products/decrementProduct', id)
       if (this.$store.state.products.cart.length == 0) {

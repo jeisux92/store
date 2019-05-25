@@ -49,19 +49,20 @@ export default {
   .cart-body {
     overflow: auto;
     height: 170px;
-    .cart-empty {
-      height: 176px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      h4 {
-        margin: 0 auto;
-      }
-    }
+
     .increment-product {
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+  }
+  .cart-empty {
+    height: 176px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    h4 {
+      margin: 0 auto;
     }
   }
 }

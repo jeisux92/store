@@ -37,7 +37,7 @@ export const mutations = {
   decrementProduct(state, id) {
     const productInCar = state.cart.find(p => p.id === id);
     if (productInCar.count === 1) {
-      const productIndex = state.cart.indexOf(p => p.id == id);
+      const productIndex = state.cart.findIndex(p => p.id == id);
       state.cart.splice(productIndex, 1);
     }
     else {

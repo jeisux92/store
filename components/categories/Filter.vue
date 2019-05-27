@@ -25,6 +25,8 @@
               <v-flex md10 xs5>
                 <v-text-field
                   color="primary"
+                  disabled
+                  readonly
                   v-model="price[0]"
                   class="mt-0"
                   prefix="$"
@@ -37,6 +39,7 @@
               <v-flex md10 xs5>
                 <v-text-field
                   color="primary"
+                  disabled
                   v-model="price[1]"
                   class="mt-0"
                   prefix="$"
